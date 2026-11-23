@@ -49,6 +49,22 @@
     } else load();
   });
 
+
+  /* تتبع التحويلات في Google Analytics */
+  function track(name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a'); if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var where = { link_text: (a.textContent || '').trim().slice(0, 60), page: location.pathname };
+    if (h.indexOf('wa.me') > -1) track('whatsapp_click', where);
+    else if (h.indexOf('tel:') === 0) track('phone_call', where);
+    else if (h.indexOf('mailto:') === 0) track('email_click', where);
+    else if (h.indexOf('google.com/maps') > -1) track('map_directions', where);
+    else if (/instagram|tiktok/.test(h)) track('social_click', where);
+  }, true);
+  var cf = document.getElementById('cform');
+  if (cf) cf.addEventListener('submit', function () { track('generate_lead', { method: 'contact_form' }); });
+
   /* تسميات خلايا الجداول للجوال */
   document.querySelectorAll('table').forEach(function (t) {
     var heads = Array.prototype.map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent.trim(); });
