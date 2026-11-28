@@ -87,7 +87,7 @@
   f.addEventListener('submit',function(e){
    e.preventDefault();
    var email=f.dataset.email, fd=new FormData(f);
-   fd.append('_subject','طلب استشارة جديد من الموقع');
+   fd.append('_subject','طلب استشارة من الموقع — '+(fd.get('الاسم')||'')+' ('+(fd.get('الخدمة')||'')+')');fd.append('_template','table');if(fd.get('email'))fd.append('_replyto',fd.get('email'));
    function show(t){m.textContent=t;m.style.display='block';}
    if(!email){show('شكراً لتواصلك. (نسخة تجريبية: سيُربط النموذج ببريد المكتب عند النشر.)');f.reset();return;}
    show('جارٍ الإرسال...');
