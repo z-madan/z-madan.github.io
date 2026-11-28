@@ -846,3 +846,4 @@ html[lang=en] .brand .name small{margin-top:2px}
 .brand{flex-shrink:1;min-width:0}
 @media (max-width:1320px){.brand .name{white-space:normal;max-width:175px;line-height:1.35}html[lang=en] .brand .name{max-width:160px}}
 @media (max-width:620px){.brand .name{max-width:none}}
+@media (max-width:1320px){html[lang=ar] .brand .name{max-width:235px}}
