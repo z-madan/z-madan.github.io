@@ -833,3 +833,6 @@ html[lang=en] .brand .name{font-size:17px}
 @media (max-width:620px){.brand .name{white-space:normal}}
 @media (max-width:620px){.brand{gap:8px}.brand img{height:42px}.brand .name{font-size:14px;line-height:1.35}.brand .name small{display:none}html[lang=en] .brand .name{font-size:13.5px}}
 @media (max-width:360px){.brand .name{display:none}}
+html[lang=en] .brand .name{white-space:normal;max-width:200px;font-size:16.5px;line-height:1.25}
+html[lang=en] .brand .name small{margin-top:2px}
+@media (max-width:1240px){html[lang=en] .brand .name{max-width:160px;font-size:15px}}
