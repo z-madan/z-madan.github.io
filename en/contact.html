@@ -86,7 +86,7 @@
   var f=document.getElementById('cform'),m=document.getElementById('fmsg');
   f.addEventListener('submit',function(e){
    e.preventDefault();
-   var fd=new FormData(f);fd.append('_subject','New consultation request — English website');
+   var fd=new FormData(f);fd.append('_subject','طلب استشارة (الموقع الإنجليزي) — '+(fd.get('Name')||'')+' ('+(fd.get('Service')||'')+')');fd.append('_template','table');if(fd.get('email'))fd.append('_replyto',fd.get('email'));
    function show(t){m.textContent=t;m.style.display='block';}
    show('Sending...');
    fetch('https://formsubmit.co/ajax/'+f.dataset.email,{method:'POST',headers:{'Accept':'application/json'},body:fd})
