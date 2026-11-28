@@ -146,3 +146,15 @@
   });
   window.addEventListener('pageshow', function () { document.body.classList.remove('leaving'); });
 })();
+/* الوضع الداكن + تتبع تبديل اللغة */
+(function () {
+  var b = document.getElementById('themeTg'), root = document.documentElement;
+  if (b) b.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch (e) {}
+    if (window.gtag) gtag('event', 'theme_toggle', { theme: t });
+  });
+  var l = document.querySelector('.lang-sw');
+  if (l) l.addEventListener('click', function () { if (window.gtag) gtag('event', 'language_switch', { to: l.getAttribute('hreflang') }); });
+})();
