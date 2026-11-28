@@ -67,7 +67,7 @@
    <a class="info" href="https://www.tiktok.com/@zainabmadan4" target="_blank" rel="noopener"><div class="ico" style="background:#111"><svg viewBox="0 0 24 24" style="fill:#fff;stroke:none"><path d="M16.6 5.8A4.3 4.3 0 0115.5 3h-3.1v12.4a2.6 2.6 0 11-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 104.9 5.7V9.1a7.3 7.3 0 004.3 1.4V7.4a4.3 4.3 0 01-3.2-1.6z"/></svg></div><div><small>TikTok</small><strong dir="ltr">@zainabmadan4</strong></div></a>
   </div>
  </div>
- <form class="form" id="cform" data-email="lawyerzamdn@gmail.com">
+ <form class="form" id="cform" data-email="97e3576fb2662171d1fb252f449376e7"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
   <h3>Consultation request form</h3>
   <div class="f-row">
    <div class="field"><label>Full name</label><input name="Name" required></div>
@@ -83,11 +83,12 @@
  </form>
  <script>
  (function(){
-  var f=document.getElementById('cform'),m=document.getElementById('fmsg');
+  var f=document.getElementById('cform'),m=document.getElementById('fmsg'),OK='Your request has been received. We will contact you shortly.';var t0=Date.now(),sent=0;
   f.addEventListener('submit',function(e){
    e.preventDefault();
    var fd=new FormData(f);fd.append('_subject','طلب استشارة (الموقع الإنجليزي) — '+(fd.get('Name')||'')+' ('+(fd.get('Service')||'')+')');fd.append('_template','table');if(fd.get('email'))fd.append('_replyto',fd.get('email'));
    function show(t){m.textContent=t;m.style.display='block';}
+   if(fd.get('_honey')||Date.now()-t0<4000||sent>=3){show(OK);f.reset();return;}sent++;fd.delete('_honey');fd.append('_honey','');fd.append('_blacklist','casino,crypto,bitcoin,viagra,cialis,porn,loan offer,backlinks,SEO services,guest post,forex,betting,whatsapp marketing,web design services');
    show('Sending...');
    fetch('https://formsubmit.co/ajax/'+f.dataset.email,{method:'POST',headers:{'Accept':'application/json'},body:fd})
     .then(function(r){return r.json()}).then(function(){show('Your request has been received. We will contact you shortly.');f.reset();if(window.gtag)gtag('event','generate_lead',{form:'contact_en'});})
