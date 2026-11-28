@@ -836,3 +836,13 @@ html[lang=en] .brand .name{font-size:17px}
 html[lang=en] .brand .name{white-space:normal;max-width:200px;font-size:16.5px;line-height:1.25}
 html[lang=en] .brand .name small{margin-top:2px}
 @media (max-width:1240px){html[lang=en] .brand .name{max-width:160px;font-size:15px}}
+/* إصلاح ازدحام الترويسة في الشاشات المتوسطة */
+.nav{gap:16px}
+.brand{flex-shrink:0}
+.menu{flex-shrink:1;min-width:0}
+@media (max-width:1320px){.menu{gap:2px}.menu a{padding:8px 11px;font-size:15px}.brand img{height:50px}.brand .name{font-size:16px}.nav-cta{padding:10px 16px;font-size:14.5px}}
+@media (max-width:1180px) and (min-width:981px){.nav-cta{display:none}.menu a{padding:8px 10px}}
+.menu{flex-shrink:0;min-width:auto}
+.brand{flex-shrink:1;min-width:0}
+@media (max-width:1320px){.brand .name{white-space:normal;max-width:175px;line-height:1.35}html[lang=en] .brand .name{max-width:160px}}
+@media (max-width:620px){.brand .name{max-width:none}}
