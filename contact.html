@@ -67,7 +67,7 @@
    <div class="info"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><small>الحجز</small><strong>عبر الواتساب على مدار 24 ساعة</strong></div></div>
   </div>
  </div>
- <form class="form" id="cform" data-email="lawyerzamdn@gmail.com">
+ <form class="form" id="cform" data-email="97e3576fb2662171d1fb252f449376e7"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
   <h3>نموذج طلب استشارة</h3>
   <div class="f-row">
    <div class="field"><label>الاسم الكامل</label><input name="الاسم" required></div>
@@ -83,12 +83,13 @@
  </form>
  <script>
  (function(){
-  var f=document.getElementById('cform'),m=document.getElementById('fmsg');
+  var f=document.getElementById('cform'),m=document.getElementById('fmsg'),OK='تم استلام طلبك بنجاح، وسنتواصل معك قريباً.';var t0=Date.now(),sent=0;
   f.addEventListener('submit',function(e){
    e.preventDefault();
    var email=f.dataset.email, fd=new FormData(f);
    fd.append('_subject','طلب استشارة من الموقع — '+(fd.get('الاسم')||'')+' ('+(fd.get('الخدمة')||'')+')');fd.append('_template','table');if(fd.get('email'))fd.append('_replyto',fd.get('email'));
    function show(t){m.textContent=t;m.style.display='block';}
+   if(fd.get('_honey')||Date.now()-t0<4000||sent>=3){show(OK);f.reset();return;}sent++;fd.delete('_honey');fd.append('_honey','');fd.append('_blacklist','casino,crypto,bitcoin,viagra,cialis,porn,loan offer,backlinks,SEO services,guest post,forex,betting,whatsapp marketing,web design services');
    if(!email){show('شكراً لتواصلك. (نسخة تجريبية: سيُربط النموذج ببريد المكتب عند النشر.)');f.reset();return;}
    show('جارٍ الإرسال...');
    fetch('https://formsubmit.co/ajax/'+email,{method:'POST',headers:{'Accept':'application/json'},body:fd})
